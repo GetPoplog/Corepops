@@ -9,4 +9,8 @@ jobs:
           name: Test corepops
           command: |
             python3 -m pip install docker
-            python generate_corepop_compat_report.py
+            mkdir /tmp/artifacts
+            python generate_corepop_compat_report.py > /tmp/artifacts/report.md
+     - store_artifacts:
+         path: /tmp/artifacts
+
