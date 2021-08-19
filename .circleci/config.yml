@@ -11,8 +11,8 @@ jobs:
             python3 -m pip install docker
             mkdir /tmp/artifacts
             python generate_corepop_compat_report.py > /tmp/artifacts/report.md
-     - store_artifacts:
-         path: /tmp/artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
 
 workflows:
   version: 2
