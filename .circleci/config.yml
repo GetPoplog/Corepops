@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  test_corepops:
+    machine:
+      image: ubuntu-2004:202107-02
+    steps:
+      - checkout
+      - run:
+          name: Test corepops
+          command: |
+            python3 -m pip install docker
+            python generate_corepop_compat_report.py
+
