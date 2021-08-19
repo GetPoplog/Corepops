@@ -10,4 +10,3 @@ jobs:
           command: |
             python3 -m pip install docker
             python generate_corepop_compat_report.py
-
