@@ -13,11 +13,6 @@ DOCKER_CLIENT = docker.from_env()
 OS_NAME = subprocess.check_output(["uname", "-s"]).decode('utf-8').lower().strip()
 ARCH = subprocess.check_output(["uname", "-m"]).decode('utf-8').strip()
 
-DEPS = {
-    'ubuntu': ['libc6', 'libncurses5', 'libncurses5-dev', 'libstdc++6', 'libxext6', 'libx11-6', 'libx11-dev', 'libxt-dev', 'libmotif-dev'],
-    'fedora': ['ncurses-devel', 'openmotif-devel', '']
-}
-
 CONTAINERS = [
     ('ubuntu', '21.04'),
     ('ubuntu', '20.04'),
