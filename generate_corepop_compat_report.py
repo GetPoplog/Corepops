@@ -18,6 +18,7 @@ CONTAINERS = [
     ('ubuntu', '20.04'),
     ('ubuntu', '18.04'),
     ('ubuntu', '16.04'),
+    ('archlinux', 'latest'),
     ('debian', 'unstable-slim'),
     ('debian', 'testing-slim'),
     ('debian', 'stable-slim'),
