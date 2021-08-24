@@ -1,3 +1,7 @@
+# IMPORTANT NOTE
+
+This repository has been folded into the Seed repository and is no longer in use.
+
 # Corepops
 
 A Poplog installation bootstraps itself from a working Poplog executable. This 
