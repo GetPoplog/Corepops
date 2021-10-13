@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  test_corepops:
+    machine:
+      image: ubuntu-2004:202107-02
+    steps:
+      - checkout
+      - run:
+          name: Test corepops
+          command: |
+            python3 -m pip install docker
+            mkdir /tmp/artifacts
+            python3 generate_corepop_compat_report.py > /tmp/artifacts/report.md
+      - store_artifacts:
+          path: /tmp/artifacts
+      - add_ssh_keys:
+          fingerprints:
+            0b:65:fa:b5:a8:41:64:61:e8:de:c7:66:0f:4b:37:01
+      - run:
+          name: Update README.md with corepop results
+          command: |
+            ./.circleci/scripts/update-readme.sh README.md /tmp/artifacts/report.md README-updated.md
+            mv README-updated.md README.md
+      - run:
+          name: Push updated README.md
+          command: |
+            git config --global user.email "circleci@example.com"
+            git config --global user.name "CircleCI"
+            git config --global push.default simple
+            CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+            git diff --quiet || { git commit -am "[skip ci] Update corepop results"; git push -u origin "$CURRENT_BRANCH"; }
+
+workflows:
+  version: 2
+  mainflow:
+    jobs:
+      - test_corepops
